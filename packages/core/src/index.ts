@@ -4,3 +4,12 @@ export { SceneGraph, type SceneNode, type SceneTransition } from './scene-graph.
 export { AgentMemory, type MemoryEntry } from './memory.js';
 export { EventBus, type MoltEvent } from './events.js';
 export { createLogger, type Logger } from './logger.js';
+export {
+  type ReasoningEngine,
+  type ReasoningContext,
+  type ReasoningResult,
+  type AudienceSignal,
+  RuleEngine,
+  LLMEngine,
+  type Rule,
+} from './reasoning.js';
