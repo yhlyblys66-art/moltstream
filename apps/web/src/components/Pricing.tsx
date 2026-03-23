@@ -57,10 +57,10 @@ const tiers = [
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="relative border-t border-brutal-red/30">
+    <section data-reveal="1" id="pricing" className="relative border-t border-brutal-red/30">
       <div className="px-6 md:px-10 py-10 border-b border-brutal-red/20 relative">
         <span className="corner-label top-right">TIER_MATRIX</span>
-        <h2 className="headline-massive text-[10vw] md:text-[8vw] text-brutal-red">
+        <h2 className="reveal headline-massive text-[10vw] md:text-[8vw] text-brutal-red">
           PRICING
         </h2>
       </div>

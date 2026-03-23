@@ -7,7 +7,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative bg-brutal-red border-t border-brutal-black/20">
+    <section data-reveal="1" className="relative bg-brutal-red border-t border-brutal-black/20">
       <div className="relative px-6 md:px-10 py-6">
         <span
           className="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-[0.1em]"

@@ -33,10 +33,10 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="relative border-t border-brutal-red/30">
+    <section data-reveal="1" id="features" className="relative border-t border-brutal-red/30">
       <div className="px-6 md:px-10 py-10 border-b border-brutal-red/20 relative">
         <span className="corner-label top-right">CAPABILITIES_MATRIX</span>
-        <h2 className="headline-massive text-[10vw] md:text-[8vw] text-brutal-red">
+        <h2 className="reveal headline-massive text-[10vw] md:text-[8vw] text-brutal-red">
           FEATURES
         </h2>
       </div>

@@ -18,11 +18,11 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="protocol" className="relative border-t border-brutal-red/30">
+    <section data-reveal="1" id="protocol" className="relative border-t border-brutal-red/30">
       {/* Section header */}
       <div className="px-6 md:px-10 py-10 border-b border-brutal-red/20 relative">
         <span className="corner-label top-right">PROTOCOL_SEQUENCE</span>
-        <h2 className="headline-massive text-[10vw] md:text-[8vw] text-brutal-red">
+        <h2 className="reveal headline-massive text-[10vw] md:text-[8vw] text-brutal-red">
           HOW IT<br />WORKS
         </h2>
       </div>
@@ -33,7 +33,7 @@ export default function HowItWorks() {
           <div key={step.num} className="grid-cell min-h-[300px] flex flex-col justify-between">
             <div>
               <span className="corner-label-cyan">STEP_{step.num}</span>
-              <p className="headline-massive headline-outlined text-[6vw] md:text-[4vw] mb-6">
+              <p className="reveal headline-massive headline-outlined text-[6vw] md:text-[4vw] mb-6">
                 {step.num}
               </p>
               <h3 className="font-grotesk font-bold text-xl text-brutal-red uppercase tracking-tight mb-4">

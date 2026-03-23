@@ -22,14 +22,34 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Space+Grotesk:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="font-grotesk">
+      <body className="font-bricolage">
         <div id="grid-overlay" />
         <div id="scanlines" />
         {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                var observer = new IntersectionObserver(function(entries){
+                  entries.forEach(function(e){
+                    if(e.isIntersecting) e.target.classList.add('visible');
+                  });
+                }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+                function observe(){
+                  document.querySelectorAll('.reveal,.reveal-stagger').forEach(function(el){
+                    observer.observe(el);
+                  });
+                }
+                if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',observe);
+                else observe();
+              })();
+            `,
+          }}
+        />
       </body>
     </html>
   );

@@ -17,7 +17,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        grotesk: ['"Space Grotesk"', "sans-serif"],
+        bricolage: ['"Bricolage Grotesque"', "sans-serif"],
         mono: ['"IBM Plex Mono"', "monospace"],
       },
     },

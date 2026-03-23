@@ -6,10 +6,10 @@ const platforms = [
 
 export default function Platforms() {
   return (
-    <section id="platforms" className="relative border-t border-brutal-red/30">
+    <section data-reveal="1" id="platforms" className="relative border-t border-brutal-red/30">
       <div className="px-6 md:px-10 py-10 border-b border-brutal-red/20 relative">
         <span className="corner-label top-right">DISTRIBUTION_NETWORK</span>
-        <h2 className="headline-massive text-[10vw] md:text-[8vw] text-brutal-red">
+        <h2 className="reveal headline-massive text-[10vw] md:text-[8vw] text-brutal-red">
           PLATFORMS
         </h2>
       </div>
