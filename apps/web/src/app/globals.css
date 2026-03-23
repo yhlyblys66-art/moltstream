@@ -7,11 +7,13 @@
    ══════════════════════════════════════════════ */
 
 :root {
-  --brutal-black: #0A0A0A;
-  --brutal-red: #FF0000;
+  --brutal-black: #0B0F14;
+  --brutal-red: #FF2020;
   --brutal-cyan: #00FFFF;
   --brutal-white: #FFFFFF;
-  --grid-size: 80px;
+  --grid-size: 120px;
+  --cross-size: 12px;
+  --dot-size: 3px;
 }
 
 * {
@@ -33,18 +35,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  /* Subtle vignette like Utopia Tokyo */
+  background-image: radial-gradient(ellipse 80% 60% at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  background-attachment: fixed;
 }
 
-/* Grid Overlay — always visible */
+/* Grid Overlay — crosshairs + center dots (matches Utopia Tokyo exactly) */
 #grid-overlay {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
+}
+
+#grid-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Main grid lines — thin, dim red */
   background-image:
-    linear-gradient(rgba(255, 0, 0, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 0, 0, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(255, 32, 32, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 32, 32, 0.18) 1px, transparent 1px);
   background-size: var(--grid-size) var(--grid-size);
+}
+
+#grid-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Crosshair glow at intersections + center dots */
+  background-image:
+    /* Horizontal crosshair arms at intersections */
+    radial-gradient(ellipse var(--cross-size) 1px at center, rgba(255, 32, 32, 0.7) 0%, transparent 100%),
+    /* Vertical crosshair arms at intersections */
+    radial-gradient(ellipse 1px var(--cross-size) at center, rgba(255, 32, 32, 0.7) 0%, transparent 100%),
+    /* Glow at intersections */
+    radial-gradient(circle 4px at center, rgba(255, 32, 32, 0.5) 0%, transparent 100%),
+    /* Center dots */
+    radial-gradient(circle var(--dot-size) at center, rgba(255, 32, 32, 0.45) 0%, rgba(255, 32, 32, 0.15) 50%, transparent 70%);
+  background-size:
+    var(--grid-size) var(--grid-size),
+    var(--grid-size) var(--grid-size),
+    var(--grid-size) var(--grid-size),
+    var(--grid-size) var(--grid-size);
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    calc(var(--grid-size) / 2) calc(var(--grid-size) / 2);
 }
 
 /* Scanline Overlay */

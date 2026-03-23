@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         brutal: {
-          black: "#0A0A0A",
-          red: "#FF0000",
+          black: "#0B0F14",
+          red: "#FF2020",
           cyan: "#00FFFF",
           white: "#FFFFFF",
         },
