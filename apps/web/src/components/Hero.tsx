@@ -1,93 +1,45 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
-const codeSnippets = [
-  "const agent = new MoltAgent()",
-  "agent.setPlatform('twitch')",
-  "agent.setPersona({ name: 'Luna' })",
-  "await agent.goLive()",
-  "stream.on('chat', handleMessage)",
-  "agent.think().respond()",
-  "consciousness.visualize()",
-  "mod.filterContent(msg)",
-  "analytics.track(viewers)",
-  "plugin.register('chess')",
-  "agent.collaborate(otherAI)",
-  "stream.quality = '1080p60'",
-];
-
 export default function Hero() {
-  const rainRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = rainRef.current;
-    if (!container) return;
-
-    // Create code rain columns
-    for (let i = 0; i < 12; i++) {
-      const col = document.createElement("div");
-      col.className = "code-rain-col";
-      col.style.left = `${8 + i * 8}%`;
-      col.style.animationDuration = `${12 + Math.random() * 15}s`;
-      col.style.animationDelay = `${-Math.random() * 10}s`;
-      col.style.fontSize = `${10 + Math.random() * 4}px`;
-
-      const lines = [];
-      for (let j = 0; j < 8; j++) {
-        lines.push(codeSnippets[Math.floor(Math.random() * codeSnippets.length)]);
-      }
-      col.textContent = lines.join(" ");
-      container.appendChild(col);
-    }
-
-    return () => {
-      while (container.firstChild) {
-        container.removeChild(container.firstChild);
-      }
-    };
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background effects */}
+      {/* Subtle grid background */}
       <div className="hero-grid" />
-      <div className="code-rain" ref={rainRef} />
 
-      {/* Radial glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center pt-20">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 mb-8 animate-fade-in">
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-xs font-mono text-primary">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded border border-ui dark:border-ui-dark bg-paper dark:bg-paper-dark mb-10 animate-fade-in">
+          <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan dark:bg-accent-cyan-light" />
+          <span className="text-xs font-mono text-tx-2 dark:text-tx-2-dark">
             Open Source · Now in Alpha
           </span>
         </div>
 
         {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 animate-fade-in-up">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 leading-[1.1] animate-fade-in">
           Launch Your AI Streamer
           <br />
-          <span className="gradient-text">in 5 Minutes</span>
+          <span className="text-accent-cyan dark:text-accent-cyan-light">in 5 Minutes</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg sm:text-xl text-text-secondary max-w-2xl mx-auto mb-10 animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
+        <p
+          className="text-lg sm:text-xl text-tx-2 dark:text-tx-2-dark max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in"
+          style={{ animationDelay: "0.1s" }}
+        >
           The first platform to deploy autonomous AI agents that stream 24/7 on
           Twitch, YouTube, and Kick.{" "}
-          <span className="text-text-primary font-medium">No code required.</span>
+          <span className="text-tx dark:text-tx-dark font-semibold">No code required.</span>
         </p>
 
         {/* CTAs */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-in-up"
-          style={{ animationDelay: "0.3s" }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-fade-in"
+          style={{ animationDelay: "0.2s" }}
         >
           <a
             href="#pricing"
-            className="w-full sm:w-auto px-8 py-3.5 bg-primary hover:bg-primary-dark text-bg font-semibold rounded-xl transition-all btn-glow text-sm"
+            className="w-full sm:w-auto px-8 py-3 bg-accent-cyan dark:bg-accent-cyan-light text-paper dark:text-paper-dark font-semibold rounded text-sm transition-colors hover:opacity-90"
           >
             Get Early Access
           </a>
@@ -95,10 +47,10 @@ export default function Hero() {
             href="https://github.com/skaggsxyz/moltstream"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-3.5 border border-border-subtle hover:border-primary/30 text-text-primary font-medium rounded-xl transition-all text-sm flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-8 py-3 border border-ui dark:border-ui-dark text-tx dark:text-tx-dark font-medium rounded text-sm flex items-center justify-center gap-2 group hover:border-tx-3 dark:hover:border-tx-3-dark transition-colors"
           >
             <svg
-              className="w-5 h-5 text-text-secondary group-hover:text-primary transition-colors"
+              className="w-5 h-5 text-tx-2 dark:text-tx-2-dark group-hover:text-tx dark:group-hover:text-tx-dark transition-colors"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -110,52 +62,52 @@ export default function Hero() {
 
         {/* Terminal preview */}
         <div
-          className="max-w-2xl mx-auto animate-fade-in-up"
-          style={{ animationDelay: "0.45s" }}
+          className="max-w-2xl mx-auto animate-fade-in"
+          style={{ animationDelay: "0.3s" }}
         >
-          <div className="rounded-xl border border-border-subtle bg-bg-card overflow-hidden shadow-2xl">
+          <div className="rounded border border-ui dark:border-ui-dark bg-paper dark:bg-ui-dark overflow-hidden">
             {/* Terminal header */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-border-subtle bg-[#0d0d0d]">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-ui dark:border-ui-dark">
               <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                <div className="w-2.5 h-2.5 rounded-full bg-accent-red/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-accent-orange/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-accent-green/60" />
               </div>
-              <span className="text-xs text-text-muted font-mono ml-2">
+              <span className="text-xs text-tx-3 dark:text-tx-3-dark font-mono ml-2">
                 moltstream deploy
               </span>
             </div>
             {/* Terminal body */}
             <div className="p-4 sm:p-6 text-left font-mono text-xs sm:text-sm space-y-2">
-              <div className="text-text-muted">
-                <span className="text-primary">$</span> molt deploy --platform
+              <div className="text-tx-3 dark:text-tx-3-dark">
+                <span className="text-accent-cyan dark:text-accent-cyan-light">$</span> molt deploy --platform
                 twitch --agent luna
               </div>
-              <div className="text-text-secondary">
+              <div className="text-tx-2 dark:text-tx-2-dark">
                 ✓ Agent &quot;Luna&quot; initialized
               </div>
-              <div className="text-text-secondary">
+              <div className="text-tx-2 dark:text-tx-2-dark">
                 ✓ Twitch OAuth connected
               </div>
-              <div className="text-text-secondary">
+              <div className="text-tx-2 dark:text-tx-2-dark">
                 ✓ Consciousness engine loaded
               </div>
-              <div className="text-text-secondary">
+              <div className="text-tx-2 dark:text-tx-2-dark">
                 ✓ Moderation filters active
               </div>
-              <div className="text-[#27c93f]">
+              <div className="text-accent-green">
                 ⚡ Luna is now live on twitch.tv/luna_ai
               </div>
-              <div className="text-text-muted cursor-blink">
-                <span className="text-primary">$</span>{" "}
+              <div className="text-tx-3 dark:text-tx-3-dark cursor-blink">
+                <span className="text-accent-cyan dark:text-accent-cyan-light">$</span>{" "}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-bg to-transparent pointer-events-none" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-paper dark:from-paper-dark to-transparent pointer-events-none" />
     </section>
   );
 }

@@ -6,77 +6,51 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        primary: "#58a6ff",
-        "primary-dark": "#388bfd",
-        "primary-light": "#79b8ff",
-        bg: "#0a0a0a",
-        "bg-card": "#111111",
-        "bg-card-hover": "#161616",
-        "border-subtle": "#1e1e1e",
-        "border-primary": "#58a6ff33",
-        "text-primary": "#e6edf3",
-        "text-secondary": "#8b949e",
-        "text-muted": "#484f58",
+        /* Flexoki palette */
+        paper: "#FFFCF0",
+        "paper-dark": "#1C1B1A",
+        ink: "#100F0F",
+        "ink-light": "#CECDC3",
+        /* Neutral tones */
+        "tx": "#100F0F",
+        "tx-2": "#6F6E69",
+        "tx-3": "#B7B5AC",
+        "ui": "#E6E4D9",
+        "ui-2": "#DAD8CE",
+        "ui-3": "#CECDC3",
+        /* Dark mode neutrals */
+        "tx-dark": "#CECDC3",
+        "tx-2-dark": "#878580",
+        "tx-3-dark": "#575653",
+        "ui-dark": "#282726",
+        "ui-2-dark": "#343331",
+        "ui-3-dark": "#403E3C",
+        /* Accent — Flexoki cyan & blue */
+        "accent-cyan": "#24837B",
+        "accent-cyan-light": "#3AA99F",
+        "accent-blue": "#205EA6",
+        "accent-blue-light": "#4385BE",
+        /* Extra accents for variety */
+        "accent-purple": "#5E409D",
+        "accent-green": "#66800B",
+        "accent-orange": "#BC5215",
+        "accent-red": "#AF3029",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "Fira Code", "monospace"],
+        mono: ['"IBM Plex Mono"', "monospace"],
+        sans: ['"IBM Plex Mono"', "monospace"],
       },
       animation: {
-        "fade-in": "fadeIn 0.6s ease-out forwards",
-        "fade-in-up": "fadeInUp 0.6s ease-out forwards",
-        "fade-in-left": "fadeInLeft 0.5s ease-out forwards",
-        "fade-in-right": "fadeInRight 0.5s ease-out forwards",
-        "scale-in": "scaleIn 0.5s ease-out forwards",
-        pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "grid-flow": "gridFlow 20s linear infinite",
-        glow: "glow 2s ease-in-out infinite alternate",
-        float: "float 6s ease-in-out infinite",
-        "code-rain": "codeRain 10s linear infinite",
+        "fade-in": "fadeIn 0.5s ease-out forwards",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
-        },
-        fadeInUp: {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        fadeInLeft: {
-          "0%": { opacity: "0", transform: "translateX(-30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        fadeInRight: {
-          "0%": { opacity: "0", transform: "translateX(30px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        scaleIn: {
-          "0%": { opacity: "0", transform: "scale(0.95)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        pulse: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
-        },
-        gridFlow: {
-          "0%": { transform: "translateY(0)" },
-          "100%": { transform: "translateY(-50%)" },
-        },
-        glow: {
-          "0%": { boxShadow: "0 0 20px rgba(88, 166, 255, 0.1)" },
-          "100%": { boxShadow: "0 0 40px rgba(88, 166, 255, 0.2)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        codeRain: {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(100%)" },
         },
       },
     },

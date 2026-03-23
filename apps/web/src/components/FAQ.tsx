@@ -35,19 +35,19 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="py-24 sm:py-32 relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-ui dark:bg-ui-dark" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16 reveal">
-          <span className="text-xs font-mono text-primary tracking-wider uppercase">
+          <span className="text-xs font-mono text-accent-cyan dark:text-accent-cyan-light tracking-wider uppercase">
             FAQ
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-4 leading-tight">
             Frequently Asked{" "}
-            <span className="gradient-text">Questions</span>
+            <span className="text-accent-cyan dark:text-accent-cyan-light">Questions</span>
           </h2>
-          <p className="text-text-secondary max-w-xl mx-auto">
+          <p className="text-tx-2 dark:text-tx-2-dark max-w-xl mx-auto leading-relaxed">
             Everything you need to know about MoltStream.
           </p>
         </div>
@@ -57,17 +57,17 @@ export default function FAQ() {
           {faqs.map((faq, i) => (
             <div
               key={i}
-              className="rounded-xl border border-border-subtle bg-bg-card overflow-hidden transition-all duration-200"
+              className="rounded border border-ui dark:border-ui-dark bg-paper dark:bg-ui-dark overflow-hidden transition-colors"
             >
               <button
                 className="w-full flex items-center justify-between p-5 text-left group"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
-                <span className="text-sm font-medium pr-4 group-hover:text-primary transition-colors">
+                <span className="text-sm font-medium pr-4 group-hover:text-accent-cyan dark:group-hover:text-accent-cyan-light transition-colors">
                   {faq.question}
                 </span>
                 <svg
-                  className={`w-5 h-5 text-text-muted flex-shrink-0 transition-transform duration-200 ${
+                  className={`w-4 h-4 text-tx-3 dark:text-tx-3-dark flex-shrink-0 transition-transform duration-200 ${
                     openIndex === i ? "rotate-180" : ""
                   }`}
                   fill="none"
@@ -87,7 +87,7 @@ export default function FAQ() {
                   openIndex === i ? "max-h-96" : "max-h-0"
                 }`}
               >
-                <div className="px-5 pb-5 text-sm text-text-secondary leading-relaxed border-t border-border-subtle pt-4">
+                <div className="px-5 pb-5 text-sm text-tx-2 dark:text-tx-2-dark leading-relaxed border-t border-ui dark:border-ui-dark pt-4">
                   {faq.answer}
                 </div>
               </div>

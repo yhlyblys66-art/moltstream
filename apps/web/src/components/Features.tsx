@@ -48,20 +48,20 @@ const features = [
 export default function Features() {
   return (
     <section id="features" className="py-24 sm:py-32 relative">
-      {/* Subtle top divider */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-subtle to-transparent" />
+      {/* Top divider */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-ui dark:bg-ui-dark" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center mb-16 reveal">
-          <span className="text-xs font-mono text-primary tracking-wider uppercase">
+          <span className="text-xs font-mono text-accent-cyan dark:text-accent-cyan-light tracking-wider uppercase">
             Features
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-4 leading-tight">
             Everything You Need to{" "}
-            <span className="gradient-text">Ship AI Streams</span>
+            <span className="text-accent-cyan dark:text-accent-cyan-light">Ship AI Streams</span>
           </h2>
-          <p className="text-text-secondary max-w-xl mx-auto">
+          <p className="text-tx-2 dark:text-tx-2-dark max-w-xl mx-auto leading-relaxed">
             Production-ready tooling for autonomous AI streaming. Built by
             streamers, for the next generation of content.
           </p>
@@ -70,24 +70,21 @@ export default function Features() {
         {/* Feature grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {features.map((feature, i) => (
-            <div
-              key={feature.title}
-              className={`reveal reveal-delay-${(i % 3) + 1}`}
-            >
-              <div className="group p-6 rounded-2xl border border-border-subtle bg-bg-card hover:bg-bg-card-hover transition-all duration-300 card-glow h-full">
+            <div key={feature.title} className={`reveal reveal-delay-${(i % 3) + 1}`}>
+              <div className="group p-6 rounded border border-ui dark:border-ui-dark bg-paper dark:bg-ui-dark hover:border-ui-2 dark:hover:border-ui-3-dark transition-colors h-full">
                 {/* Top row */}
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-3xl">{feature.emoji}</span>
-                  <span className="text-[10px] font-mono text-text-muted uppercase tracking-wider px-2 py-0.5 rounded border border-border-subtle">
+                <div className="flex items-start justify-between mb-5">
+                  <span className="text-2xl">{feature.emoji}</span>
+                  <span className="text-[10px] font-mono text-tx-3 dark:text-tx-3-dark uppercase tracking-wider px-2 py-0.5 rounded border border-ui dark:border-ui-dark">
                     {feature.tag}
                   </span>
                 </div>
 
                 {/* Content */}
-                <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-base font-semibold mb-2 group-hover:text-accent-cyan dark:group-hover:text-accent-cyan-light transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-text-secondary leading-relaxed">
+                <p className="text-sm text-tx-2 dark:text-tx-2-dark leading-relaxed">
                   {feature.description}
                 </p>
               </div>
