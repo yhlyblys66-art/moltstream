@@ -1,6 +1,3 @@
-"use client";
-
-import { useReveal } from "@/hooks/useReveal";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import HowItWorks from "@/components/HowItWorks";
@@ -12,21 +9,25 @@ import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 
 export default function Home() {
-  const revealRef = useReveal();
-
   return (
-    <div ref={revealRef}>
+    <>
       <Navbar />
       <main>
         <Hero />
+        <hr className="section-divider" />
         <HowItWorks />
+        <hr className="section-divider" />
         <Features />
+        <hr className="section-divider" />
         <Stats />
+        <hr className="section-divider" />
         <Platforms />
+        <hr className="section-divider" />
         <Pricing />
+        <hr className="section-divider" />
         <FAQ />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

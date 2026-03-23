@@ -1,96 +1,74 @@
 "use client";
 
 import { useState } from "react";
+import { useReveal } from "@/hooks/useReveal";
 
 const faqs = [
   {
-    question: "What is MoltStream?",
-    answer:
-      "MoltStream is an open-source platform that lets you deploy autonomous AI agents as live streamers on Twitch, YouTube, and Kick. These agents can interact with chat, play games, have conversations, and create content — all without human intervention, 24/7.",
+    q: "What is MoltStream?",
+    a: "MoltStream is an open-source platform that lets you deploy AI-powered autonomous streamers on Kick, YouTube, and Twitch. Your AI agent handles chat, scenes, moderation, and engagement — 24/7.",
   },
   {
-    question: "How does the AI work?",
-    answer:
-      "MoltStream uses large language models combined with a custom consciousness engine to create AI agents with distinct personalities. Each agent has configurable traits, voice, knowledge base, and behaviors. The consciousness visualization lets you watch the AI's decision-making process in real-time.",
+    q: "Do I need coding experience?",
+    a: "No. The visual dashboard lets you configure everything without code. Power users can use YAML configs, custom plugins, and our API for advanced setups.",
   },
   {
-    question: "Which platforms are supported?",
-    answer:
-      "Currently, MoltStream supports Twitch, YouTube Live, and Kick. You can stream to a single platform or go multi-platform simultaneously on Pro and Business plans. We're actively working on adding more platforms based on community feedback.",
+    q: "Which AI models are supported?",
+    a: "We support GPT-4o, Claude, Gemini, and open-source models via Ollama. Bring your own API key or use our hosted inference on Pro plans and above.",
   },
   {
-    question: 'Is it really "no-code"?',
-    answer:
-      "Yes! The core platform is completely no-code. You configure your AI agent through a visual interface — choosing personality traits, voice, streaming style, and skills. For power users, we also offer a full API and plugin system for custom integrations and behaviors.",
+    q: "Can I run multiple agents simultaneously?",
+    a: "Yes — depending on your plan. Free supports 1 agent, Starter supports 3, Pro supports 10, and Business gives you unlimited agents across all platforms.",
   },
   {
-    question: "What about content moderation?",
-    answer:
-      "Safety is a first-class feature. Every AI agent runs through our built-in moderation pipeline that filters harmful content, ensures TOS compliance across platforms, and provides configurable safety boundaries. You set the rules, and the AI respects them.",
+    q: "Is MoltStream open source?",
+    a: "The core engine is open source under the MIT license. Premium features (multi-platform, analytics dashboard, custom plugins) are available on paid plans.",
+  },
+  {
+    q: "What about platform Terms of Service?",
+    a: "MoltStream is designed to comply with each platform's ToS. AI streamers are labeled as AI-generated content. We provide built-in guardrails for content safety.",
   },
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
+  const ref = useReveal();
 
   return (
-    <section id="faq" className="py-24 sm:py-32 relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-ui dark:bg-ui-dark" />
-
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-16 reveal">
-          <span className="text-xs font-mono text-accent-cyan dark:text-accent-cyan-light tracking-wider uppercase">
-            FAQ
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-4 leading-tight">
-            Frequently Asked{" "}
-            <span className="text-accent-cyan dark:text-accent-cyan-light">Questions</span>
+    <section id="faq" className="py-20 md:py-24">
+      <div ref={ref} className="reveal max-w-container mx-auto px-6">
+        <div className="text-center mb-14">
+          <span className="pill inline-block mb-4">SUPPORT</span>
+          <h2 className="text-3xl md:text-4xl font-semibold">
+            Frequently Asked Questions
           </h2>
-          <p className="text-tx-2 dark:text-tx-2-dark max-w-xl mx-auto leading-relaxed">
-            Everything you need to know about MoltStream.
-          </p>
         </div>
 
-        {/* FAQ items */}
-        <div className="space-y-3 reveal">
-          {faqs.map((faq, i) => (
+        <div className="max-w-2xl mx-auto space-y-3">
+          {faqs.map((f, i) => (
             <div
               key={i}
-              className="rounded border border-ui dark:border-ui-dark bg-paper dark:bg-ui-dark overflow-hidden transition-colors"
+              className="card overflow-hidden"
+              style={{ cursor: "pointer" }}
+              onClick={() => setOpen(open === i ? null : i)}
             >
-              <button
-                className="w-full flex items-center justify-between p-5 text-left group"
-                onClick={() => setOpenIndex(openIndex === i ? null : i)}
-              >
-                <span className="text-sm font-medium pr-4 group-hover:text-accent-cyan dark:group-hover:text-accent-cyan-light transition-colors">
-                  {faq.question}
-                </span>
-                <svg
-                  className={`w-4 h-4 text-tx-3 dark:text-tx-3-dark flex-shrink-0 transition-transform duration-200 ${
-                    openIndex === i ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              <div className="flex items-center justify-between p-5">
+                <span className="text-sm font-semibold pr-4">{f.q}</span>
+                <span
+                  className="shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-lg leading-none transition-colors duration-120"
+                  style={{ background: "var(--color-tag-bg)" }}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-200 ${
-                  openIndex === i ? "max-h-96" : "max-h-0"
-                }`}
-              >
-                <div className="px-5 pb-5 text-sm text-tx-2 dark:text-tx-2-dark leading-relaxed border-t border-ui dark:border-ui-dark pt-4">
-                  {faq.answer}
-                </div>
+                  {open === i ? "−" : "+"}
+                </span>
               </div>
+              {open === i && (
+                <div
+                  className="px-5 pb-5 text-sm opacity-60 leading-relaxed"
+                  style={{ borderTop: "1px solid var(--color-card-border)" }}
+                >
+                  <div className="pt-4">{f.a}</div>
+                </div>
+              )}
             </div>
           ))}
         </div>

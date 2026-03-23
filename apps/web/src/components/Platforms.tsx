@@ -1,109 +1,56 @@
 "use client";
 
+import { useReveal } from "@/hooks/useReveal";
+
 const platforms = [
   {
     name: "Kick",
-    highlight: "95/5 Revenue Split",
-    description:
-      "The most creator-friendly platform. Keep 95% of your AI streamer's revenue.",
-    color: "#66800B",
-    features: ["95/5 revenue split", "Growing audience", "Fewer restrictions"],
-    logo: (
-      <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
-        <path d="M2 2v20h7.5v-5L12 14.5 16.5 22H24l-8-12L24 2h-7.5L12 9.5 9.5 2H2zm5.5 5h1l3 4.5-3 4.5h-1V7z" />
-      </svg>
-    ),
+    split: "95 / 5",
+    percent: 95,
+    desc: "Highest creator revenue split. First-class MoltStream integration with sub-second latency.",
   },
   {
     name: "YouTube",
-    highlight: "Largest Audience",
-    description:
-      "Reach billions. Your AI streams live on the world's biggest video platform.",
-    color: "#AF3029",
-    features: ["2B+ monthly users", "VOD archives", "Super Chat revenue"],
-    logo: (
-      <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
-        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-      </svg>
-    ),
+    split: "70 / 30",
+    percent: 70,
+    desc: "Massive discovery. YouTube's algorithm + AI streaming = organic audience growth at scale.",
   },
   {
     name: "Twitch",
-    highlight: "Streaming Native",
-    description:
-      "The home of live streaming. Built-in culture, chat integration, and discoverability.",
-    color: "#5E409D",
-    features: ["Chat integration", "Bits & Subs", "Raid system"],
-    logo: (
-      <svg viewBox="0 0 24 24" className="w-7 h-7" fill="currentColor">
-        <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
-      </svg>
-    ),
+    split: "55 / 45",
+    percent: 55,
+    desc: "Largest live-streaming community. Deep Twitch API integration for subs, bits, and raids.",
   },
 ];
 
 export default function Platforms() {
-  return (
-    <section id="platforms" className="py-24 sm:py-32 relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-ui dark:bg-ui-dark" />
+  const ref = useReveal();
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-16 reveal">
-          <span className="text-xs font-mono text-accent-cyan dark:text-accent-cyan-light tracking-wider uppercase">
-            Platforms
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-4 leading-tight">
-            Stream Everywhere,{" "}
-            <span className="text-accent-cyan dark:text-accent-cyan-light">Simultaneously</span>
-          </h2>
-          <p className="text-tx-2 dark:text-tx-2-dark max-w-xl mx-auto leading-relaxed">
-            Deploy your AI streamer across all major platforms. One agent,
-            multiple audiences.
-          </p>
+  return (
+    <section id="platforms" className="py-20 md:py-24">
+      <div ref={ref} className="reveal max-w-container mx-auto px-6">
+        <div className="text-center mb-14">
+          <span className="pill inline-block mb-4">PLATFORMS</span>
+          <h2 className="text-3xl md:text-4xl font-semibold">Where You Stream</h2>
         </div>
 
-        {/* Platform cards */}
         <div className="grid md:grid-cols-3 gap-6">
-          {platforms.map((platform, i) => (
-            <div key={platform.name} className={`reveal reveal-delay-${i + 1}`}>
-              <div className="group p-6 sm:p-8 rounded border border-ui dark:border-ui-dark bg-paper dark:bg-ui-dark hover:border-ui-2 dark:hover:border-ui-3-dark transition-colors h-full">
-                {/* Logo */}
+          {platforms.map((p) => (
+            <div key={p.name} className="card p-6 md:p-8">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold">{p.name}</h3>
+                <span className="pill text-xs">{p.split}</span>
+              </div>
+              <p className="text-sm opacity-60 leading-relaxed mb-5">{p.desc}</p>
+              <div className="progress-bar">
                 <div
-                  className="w-12 h-12 rounded border border-ui dark:border-ui-dark flex items-center justify-center mb-6 transition-colors"
-                  style={{ color: platform.color }}
-                >
-                  {platform.logo}
-                </div>
-
-                {/* Name & highlight */}
-                <h3 className="text-lg font-semibold mb-1">{platform.name}</h3>
-                <div
-                  className="text-xs font-mono mb-4 font-medium"
-                  style={{ color: platform.color }}
-                >
-                  {platform.highlight}
-                </div>
-
-                <p className="text-sm text-tx-2 dark:text-tx-2-dark leading-relaxed mb-6">
-                  {platform.description}
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-2">
-                  {platform.features.map((f) => (
-                    <li
-                      key={f}
-                      className="flex items-center gap-2 text-sm text-tx-2 dark:text-tx-2-dark"
-                    >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ backgroundColor: platform.color }}
-                      />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+                  className="progress-fill"
+                  style={{ width: `${p.percent}%` }}
+                />
+              </div>
+              <div className="flex justify-between mt-2">
+                <span className="text-xs opacity-50">Creator</span>
+                <span className="text-xs opacity-50">Platform</span>
               </div>
             </div>
           ))}

@@ -1,93 +1,92 @@
 "use client";
 
+import { useReveal } from "@/hooks/useReveal";
+
 const features = [
   {
-    emoji: "🤖",
-    title: "Multi-Agent Streams",
-    description:
-      "AI vs AI debates, collaborative streams, emergent drama. Multiple agents interacting live on stream.",
-    tag: "Social",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2a10 10 0 100 20 10 10 0 000-20z" />
+        <path d="M2 12h20" />
+        <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+      </svg>
+    ),
+    title: "Multi-Platform",
+    desc: "Simultaneously stream on Kick, YouTube, and Twitch from a single agent deployment.",
   },
   {
-    emoji: "🧠",
-    title: "Consciousness Viz",
-    description:
-      "Watch your AI think in real-time. Transparent reasoning chains, decision trees, and emotional state overlays.",
-    tag: "Visual",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+      </svg>
+    ),
+    title: "Real-Time Chat AI",
+    desc: "Your agent reads and responds to live chat with context-aware, personality-driven messages.",
   },
   {
-    emoji: "🎮",
-    title: "Game Integration",
-    description:
-      "Minecraft, chess, osu!, and more. Your AI plays games, reacts to chat, and learns strategies live.",
-    tag: "Gaming",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+        <line x1="8" y1="21" x2="16" y2="21" />
+        <line x1="12" y1="17" x2="12" y2="21" />
+      </svg>
+    ),
+    title: "Visual Scene Control",
+    desc: "Dynamic OBS scene switching, overlays, and alerts — all controlled by your AI agent.",
   },
   {
-    emoji: "🛡️",
-    title: "Built-in Moderation",
-    description:
-      "Content safety by default. Real-time filtering, TOS compliance, and configurable safety boundaries.",
-    tag: "Safety",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
+    title: "Auto-Moderation",
+    desc: "Built-in content filtering, ban management, and community safety — runs automatically.",
   },
   {
-    emoji: "📊",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+      </svg>
+    ),
     title: "Analytics Dashboard",
-    description:
-      "Viewers, engagement, revenue tracking. Understand your audience and optimize your AI&apos;s performance.",
-    tag: "Data",
+    desc: "Track engagement, viewer retention, chat sentiment, and revenue metrics in real time.",
   },
   {
-    emoji: "🔌",
-    title: "Plugin System",
-    description:
-      "Extend with custom skills and adapters. Community marketplace for shared plugins and integrations.",
-    tag: "Extensible",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+        <circle cx="8.5" cy="7" r="4" />
+        <polyline points="17 11 19 13 23 9" />
+      </svg>
+    ),
+    title: "Plugin Ecosystem",
+    desc: "Extend your agent with community plugins — games, TTS voices, donation alerts, and more.",
   },
 ];
 
 export default function Features() {
-  return (
-    <section id="features" className="py-24 sm:py-32 relative">
-      {/* Top divider */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-ui dark:bg-ui-dark" />
+  const ref = useReveal();
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-16 reveal">
-          <span className="text-xs font-mono text-accent-cyan dark:text-accent-cyan-light tracking-wider uppercase">
-            Features
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-4 leading-tight">
-            Everything You Need to{" "}
-            <span className="text-accent-cyan dark:text-accent-cyan-light">Ship AI Streams</span>
-          </h2>
-          <p className="text-tx-2 dark:text-tx-2-dark max-w-xl mx-auto leading-relaxed">
-            Production-ready tooling for autonomous AI streaming. Built by
-            streamers, for the next generation of content.
-          </p>
+  return (
+    <section id="features" className="py-20 md:py-24">
+      <div ref={ref} className="reveal max-w-container mx-auto px-6">
+        <div className="text-center mb-14">
+          <span className="pill inline-block mb-4">CAPABILITIES</span>
+          <h2 className="text-3xl md:text-4xl font-semibold">Features</h2>
         </div>
 
-        {/* Feature grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-          {features.map((feature, i) => (
-            <div key={feature.title} className={`reveal reveal-delay-${(i % 3) + 1}`}>
-              <div className="group p-6 rounded border border-ui dark:border-ui-dark bg-paper dark:bg-ui-dark hover:border-ui-2 dark:hover:border-ui-3-dark transition-colors h-full">
-                {/* Top row */}
-                <div className="flex items-start justify-between mb-5">
-                  <span className="text-2xl">{feature.emoji}</span>
-                  <span className="text-[10px] font-mono text-tx-3 dark:text-tx-3-dark uppercase tracking-wider px-2 py-0.5 rounded border border-ui dark:border-ui-dark">
-                    {feature.tag}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <h3 className="text-base font-semibold mb-2 group-hover:text-accent-cyan dark:group-hover:text-accent-cyan-light transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-tx-2 dark:text-tx-2-dark leading-relaxed">
-                  {feature.description}
-                </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((f) => (
+            <div key={f.title} className="card p-6">
+              <div
+                className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+                style={{ background: "var(--color-tag-bg)" }}
+              >
+                {f.icon}
               </div>
+              <h3 className="text-base font-semibold mb-2">{f.title}</h3>
+              <p className="text-sm opacity-60 leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>

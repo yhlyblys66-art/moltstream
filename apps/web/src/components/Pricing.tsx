@@ -1,171 +1,140 @@
 "use client";
 
-const plans = [
+import { useReveal } from "@/hooks/useReveal";
+
+const tiers = [
   {
     name: "Free",
     price: "$0",
     period: "forever",
-    description: "Get started. See what's possible.",
     features: [
-      "1 AI streamer",
-      "10 hours / month",
-      "Single platform",
-      "MoltStream watermark",
+      "1 AI agent",
+      "720p streaming",
+      "Basic chat responses",
       "Community support",
+      "MoltStream branding",
     ],
-    cta: "Start Free",
-    popular: false,
+    cta: "Get Started",
+    highlighted: false,
   },
   {
     name: "Starter",
     price: "$149",
-    period: "/mo",
-    description: "For creators ready to experiment.",
+    period: "/month",
     features: [
-      "1 AI streamer",
-      "200 hours / month",
-      "Single platform",
-      "No watermark",
+      "3 AI agents",
+      "1080p streaming",
+      "Custom personality",
       "Basic analytics",
       "Email support",
     ],
-    cta: "Get Early Access",
-    popular: false,
+    cta: "Start Trial",
+    highlighted: false,
   },
   {
     name: "Pro",
     price: "$399",
-    period: "/mo",
-    description: "Go live 24/7 across platforms.",
+    period: "/month",
     features: [
-      "1 AI streamer",
-      "Unlimited hours (24/7)",
-      "Multi-platform streaming",
+      "10 AI agents",
+      "4K streaming",
+      "Multi-platform",
       "Advanced analytics",
-      "Consciousness visualization",
       "Priority support",
-      "Custom persona fine-tuning",
+      "Custom plugins",
     ],
-    cta: "Get Early Access",
-    popular: true,
+    cta: "Go Pro",
+    highlighted: true,
   },
   {
     name: "Business",
     price: "$999",
-    period: "/mo",
-    description: "Scale your AI streaming operation.",
+    period: "/month",
     features: [
-      "3 AI streamers",
-      "Unlimited hours (24/7)",
-      "Multi-platform streaming",
-      "Custom avatars",
-      "Full API access",
-      "Dedicated support",
-      "Multi-agent interactions",
-      "White-label option",
+      "Unlimited agents",
+      "4K + multi-stream",
+      "White-label",
+      "Dedicated manager",
+      "SLA guarantee",
+      "API access",
     ],
-    cta: "Get Early Access",
-    popular: false,
+    cta: "Contact Us",
+    highlighted: false,
   },
 ];
 
 export default function Pricing() {
-  return (
-    <section id="pricing" className="py-24 sm:py-32 relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-ui dark:bg-ui-dark" />
+  const ref = useReveal();
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="text-center mb-16 reveal">
-          <span className="text-xs font-mono text-accent-cyan dark:text-accent-cyan-light tracking-wider uppercase">
-            Pricing
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold mt-4 mb-4 leading-tight">
-            Simple,{" "}
-            <span className="text-accent-cyan dark:text-accent-cyan-light">Transparent</span>{" "}
-            Pricing
-          </h2>
-          <p className="text-tx-2 dark:text-tx-2-dark max-w-xl mx-auto leading-relaxed">
-            Start free. Scale when you&apos;re ready. No hidden fees, no
-            surprise charges.
-          </p>
+  return (
+    <section id="pricing" className="py-20 md:py-24">
+      <div ref={ref} className="reveal max-w-container mx-auto px-6">
+        <div className="text-center mb-14">
+          <span className="pill inline-block mb-4">PRICING</span>
+          <h2 className="text-3xl md:text-4xl font-semibold">Simple Pricing</h2>
         </div>
 
-        {/* Pricing grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
-          {plans.map((plan, i) => (
-            <div key={plan.name} className={`reveal reveal-delay-${(i % 4) + 1}`}>
-              <div
-                className={`relative p-6 rounded border h-full flex flex-col transition-colors ${
-                  plan.popular
-                    ? "border-accent-cyan dark:border-accent-cyan-light bg-paper dark:bg-ui-dark"
-                    : "border-ui dark:border-ui-dark bg-paper dark:bg-ui-dark hover:border-ui-2 dark:hover:border-ui-3-dark"
-                }`}
-              >
-                {/* Popular badge */}
-                {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded bg-accent-cyan dark:bg-accent-cyan-light text-paper dark:text-paper-dark text-[10px] font-mono font-semibold uppercase tracking-wider">
-                    Most Popular
-                  </div>
-                )}
-
-                {/* Plan header */}
-                <div className="mb-6">
-                  <h3 className="text-base font-semibold mb-1">{plan.name}</h3>
-                  <div className="flex items-baseline gap-1 mb-2">
-                    <span className="text-3xl font-bold">{plan.price}</span>
-                    <span className="text-sm text-tx-3 dark:text-tx-3-dark">
-                      {plan.period}
-                    </span>
-                  </div>
-                  <p className="text-sm text-tx-2 dark:text-tx-2-dark">
-                    {plan.description}
-                  </p>
-                </div>
-
-                {/* Features */}
-                <ul className="space-y-3 mb-8 flex-1">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm">
-                      <svg
-                        className="w-4 h-4 text-accent-cyan dark:text-accent-cyan-light mt-0.5 flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="text-tx-2 dark:text-tx-2-dark">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <a
-                  href="#"
-                  className={`block text-center py-2.5 rounded text-sm font-semibold transition-colors ${
-                    plan.popular
-                      ? "bg-accent-cyan dark:bg-accent-cyan-light text-paper dark:text-paper-dark hover:opacity-90"
-                      : "border border-ui dark:border-ui-dark text-tx dark:text-tx-dark hover:border-ui-2 dark:hover:border-ui-3-dark"
-                  }`}
-                >
-                  {plan.cta}
-                </a>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {tiers.map((t) => (
+            <div
+              key={t.name}
+              className="card p-6 flex flex-col"
+              style={
+                t.highlighted
+                  ? {
+                      border: "2px solid transparent",
+                      backgroundImage: `linear-gradient(var(--color-card-bg), var(--color-card-bg)), var(--gradient-accent)`,
+                      backgroundOrigin: "border-box",
+                      backgroundClip: "padding-box, border-box",
+                    }
+                  : undefined
+              }
+            >
+              {t.highlighted && (
+                <div className="pill text-center mb-4 text-xs">MOST POPULAR</div>
+              )}
+              <h3 className="text-lg font-semibold mb-1">{t.name}</h3>
+              <div className="mb-5">
+                <span className="text-3xl font-semibold">{t.price}</span>
+                <span className="text-sm opacity-50 ml-1">{t.period}</span>
               </div>
+              <ul className="flex-1 space-y-2.5 mb-6">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className="mt-0.5 shrink-0 opacity-50"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <span className="opacity-70">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                className="w-full py-3 rounded-md text-sm font-medium transition-colors duration-120"
+                style={
+                  t.highlighted
+                    ? {
+                        background: "var(--color-ink)",
+                        color: "var(--color-paper)",
+                      }
+                    : {
+                        background: "var(--color-tag-bg)",
+                        color: "var(--color-ink)",
+                      }
+                }
+              >
+                {t.cta}
+              </button>
             </div>
           ))}
         </div>
-
-        {/* Bottom note */}
-        <p className="text-center text-xs text-tx-3 dark:text-tx-3-dark mt-8 reveal">
-          All plans include security updates and platform maintenance. Prices in
-          USD. Cancel anytime.
-        </p>
       </div>
     </section>
   );

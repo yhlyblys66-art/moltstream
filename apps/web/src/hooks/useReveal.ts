@@ -2,33 +2,25 @@
 
 import { useEffect, useRef } from "react";
 
-export function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
+export function useReveal<T extends HTMLElement = HTMLDivElement>() {
+  const ref = useRef<T>(null);
 
   useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add("visible");
+          observer.unobserve(el);
+        }
       },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
+      { threshold: 0.1 }
     );
 
-    const el = ref.current;
-    if (el) {
-      const revealElements = el.querySelectorAll(".reveal");
-      revealElements.forEach((element) => observer.observe(element));
-
-      return () => {
-        revealElements.forEach((element) => observer.unobserve(element));
-      };
-    }
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   return ref;

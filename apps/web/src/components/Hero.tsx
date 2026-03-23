@@ -1,113 +1,139 @@
 "use client";
 
+import { useReveal } from "@/hooks/useReveal";
+
 export default function Hero() {
+  const ref = useReveal();
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle grid background */}
-      <div className="hero-grid" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center pt-20">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded border border-ui dark:border-ui-dark bg-paper dark:bg-paper-dark mb-10 animate-fade-in">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan dark:bg-accent-cyan-light" />
-          <span className="text-xs font-mono text-tx-2 dark:text-tx-2-dark">
-            Open Source · Now in Alpha
-          </span>
-        </div>
-
-        {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 leading-[1.1] animate-fade-in">
-          Launch Your AI Streamer
-          <br />
-          <span className="text-accent-cyan dark:text-accent-cyan-light">in 5 Minutes</span>
-        </h1>
-
-        {/* Subtitle */}
-        <p
-          className="text-lg sm:text-xl text-tx-2 dark:text-tx-2-dark max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in"
-          style={{ animationDelay: "0.1s" }}
-        >
-          The first platform to deploy autonomous AI agents that stream 24/7 on
-          Twitch, YouTube, and Kick.{" "}
-          <span className="text-tx dark:text-tx-dark font-semibold">No code required.</span>
-        </p>
-
-        {/* CTAs */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 animate-fade-in"
-          style={{ animationDelay: "0.2s" }}
-        >
-          <a
-            href="#pricing"
-            className="w-full sm:w-auto px-8 py-3 bg-accent-cyan dark:bg-accent-cyan-light text-paper dark:text-paper-dark font-semibold rounded text-sm transition-colors hover:opacity-90"
-          >
-            Get Early Access
-          </a>
-          <a
-            href="https://github.com/skaggsxyz/moltstream"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto px-8 py-3 border border-ui dark:border-ui-dark text-tx dark:text-tx-dark font-medium rounded text-sm flex items-center justify-center gap-2 group hover:border-tx-3 dark:hover:border-tx-3-dark transition-colors"
-          >
-            <svg
-              className="w-5 h-5 text-tx-2 dark:text-tx-2-dark group-hover:text-tx dark:group-hover:text-tx-dark transition-colors"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-            View on GitHub
-          </a>
-        </div>
-
-        {/* Terminal preview */}
-        <div
-          className="max-w-2xl mx-auto animate-fade-in"
-          style={{ animationDelay: "0.3s" }}
-        >
-          <div className="rounded border border-ui dark:border-ui-dark bg-paper dark:bg-ui-dark overflow-hidden">
-            {/* Terminal header */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-ui dark:border-ui-dark">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-accent-red/60" />
-                <div className="w-2.5 h-2.5 rounded-full bg-accent-orange/60" />
-                <div className="w-2.5 h-2.5 rounded-full bg-accent-green/60" />
-              </div>
-              <span className="text-xs text-tx-3 dark:text-tx-3-dark font-mono ml-2">
-                moltstream deploy
-              </span>
+    <section
+      className="relative pt-32 pb-20 md:pb-28 overflow-hidden noise-overlay"
+      style={{ background: "var(--gradient-hero)" }}
+    >
+      <div ref={ref} className="reveal max-w-container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left — copy */}
+          <div>
+            <div className="pill inline-block mb-6">AI STREAMING INFRASTRUCTURE</div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-6">
+              Launch Your
+              <br />
+              AI Streamer
+            </h1>
+            <p className="text-base md:text-lg opacity-60 mb-8 max-w-lg">
+              Deploy autonomous AI-powered live streamers on Kick, YouTube &amp;
+              Twitch. Full control, real-time interaction, zero manual effort.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://github.com/moltstream"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md text-sm font-medium transition-colors duration-120"
+                style={{
+                  background: "var(--color-ink)",
+                  color: "var(--color-paper)",
+                }}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                View on GitHub
+              </a>
+              <a
+                href="#pricing"
+                className="inline-flex items-center px-6 py-3 rounded-md text-sm font-medium border transition-colors duration-120"
+                style={{
+                  borderColor: "var(--color-card-border)",
+                  color: "var(--color-ink)",
+                }}
+              >
+                View Pricing →
+              </a>
             </div>
-            {/* Terminal body */}
-            <div className="p-4 sm:p-6 text-left font-mono text-xs sm:text-sm space-y-2">
-              <div className="text-tx-3 dark:text-tx-3-dark">
-                <span className="text-accent-cyan dark:text-accent-cyan-light">$</span> molt deploy --platform
-                twitch --agent luna
+          </div>
+
+          {/* Right — fake agent config UI */}
+          <div className="card p-6 md:p-8 relative z-10">
+            <div className="flex items-center gap-2 mb-6">
+              <span className="w-3 h-3 rounded-full" style={{ background: "#AF3029" }} />
+              <span className="w-3 h-3 rounded-full" style={{ background: "#AD8301" }} />
+              <span className="w-3 h-3 rounded-full" style={{ background: "#66800B" }} />
+              <span className="ml-3 label-upper">agent.config</span>
+            </div>
+
+            {/* Fake slider — Creativity */}
+            <div className="mb-5">
+              <div className="flex justify-between mb-2">
+                <span className="text-xs opacity-60">CREATIVITY</span>
+                <span className="text-xs">0.85</span>
               </div>
-              <div className="text-tx-2 dark:text-tx-2-dark">
-                ✓ Agent &quot;Luna&quot; initialized
+              <div className="progress-bar">
+                <div className="progress-fill" style={{ width: "85%" }} />
               </div>
-              <div className="text-tx-2 dark:text-tx-2-dark">
-                ✓ Twitch OAuth connected
+            </div>
+
+            {/* Fake slider — Response Time */}
+            <div className="mb-5">
+              <div className="flex justify-between mb-2">
+                <span className="text-xs opacity-60">RESPONSE TIME</span>
+                <span className="text-xs">120ms</span>
               </div>
-              <div className="text-tx-2 dark:text-tx-2-dark">
-                ✓ Consciousness engine loaded
+              <div className="progress-bar">
+                <div className="progress-fill" style={{ width: "35%" }} />
               </div>
-              <div className="text-tx-2 dark:text-tx-2-dark">
-                ✓ Moderation filters active
+            </div>
+
+            {/* Fake dropdown */}
+            <div className="mb-5">
+              <span className="text-xs opacity-60 block mb-2">PLATFORM</span>
+              <div
+                className="flex items-center justify-between px-4 py-2.5 rounded-md text-sm"
+                style={{
+                  background: "var(--color-paper)",
+                  border: "1px solid var(--color-card-border)",
+                }}
+              >
+                <span>Kick.com</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
               </div>
-              <div className="text-accent-green">
-                ⚡ Luna is now live on twitch.tv/luna_ai
+            </div>
+
+            {/* Fake dropdown — Model */}
+            <div className="mb-5">
+              <span className="text-xs opacity-60 block mb-2">MODEL</span>
+              <div
+                className="flex items-center justify-between px-4 py-2.5 rounded-md text-sm"
+                style={{
+                  background: "var(--color-paper)",
+                  border: "1px solid var(--color-card-border)",
+                }}
+              >
+                <span>GPT-4o</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
               </div>
-              <div className="text-tx-3 dark:text-tx-3-dark cursor-blink">
-                <span className="text-accent-cyan dark:text-accent-cyan-light">$</span>{" "}
+            </div>
+
+            {/* Fake toggle */}
+            <div className="flex items-center justify-between">
+              <span className="text-xs opacity-60">AUTO-MODERATE</span>
+              <div
+                className="w-10 h-5 rounded-full relative"
+                style={{ background: "var(--gradient-accent)" }}
+              >
+                <div
+                  className="w-4 h-4 rounded-full absolute top-0.5 right-0.5"
+                  style={{ background: "var(--color-paper)" }}
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-paper dark:from-paper-dark to-transparent pointer-events-none" />
     </section>
   );
 }

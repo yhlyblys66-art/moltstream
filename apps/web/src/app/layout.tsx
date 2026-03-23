@@ -1,73 +1,42 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "MoltStream — Launch Your AI Streamer in 5 Minutes",
+  title: "MoltStream — AI-Powered Streaming Agents",
   description:
-    "The first platform to deploy autonomous AI agents that stream 24/7 on Twitch, YouTube, and Kick. No code required. Open source.",
-  keywords: [
-    "AI streaming",
-    "autonomous AI",
-    "Twitch AI",
-    "YouTube AI",
-    "Kick streaming",
-    "AI agent",
-    "live streaming",
-    "StreamFi",
-    "MoltStream",
-  ],
-  authors: [{ name: "Tyler Skaggs", url: "https://github.com/skaggsxyz" }],
+    "Launch autonomous AI streamers on Kick, YouTube & Twitch. MoltStream provides the infrastructure to deploy, manage and monetize AI-driven live streams.",
   openGraph: {
-    title: "MoltStream — Launch Your AI Streamer in 5 Minutes",
+    title: "MoltStream — AI-Powered Streaming Agents",
     description:
-      "Deploy autonomous AI agents that stream 24/7 on Twitch, YouTube, and Kick. No code required.",
+      "Launch autonomous AI streamers on Kick, YouTube & Twitch.",
+    type: "website",
     url: "https://moltstream.com",
     siteName: "MoltStream",
-    type: "website",
-    locale: "en_US",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "MoltStream — AI Streaming Platform",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MoltStream — Launch Your AI Streamer in 5 Minutes",
+    title: "MoltStream — AI-Powered Streaming Agents",
     description:
-      "Deploy autonomous AI agents that stream 24/7 on Twitch, YouTube, and Kick.",
-    creator: "@skaggsxyz",
-    images: ["/og-image.png"],
+      "Launch autonomous AI streamers on Kick, YouTube & Twitch.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  metadataBase: new URL("https://moltstream.com"),
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={ibmPlexMono.variable}>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -83,9 +52,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased bg-paper dark:bg-paper-dark text-ink dark:text-ink-light">
-        {children}
-      </body>
+      <body className="font-mono antialiased">{children}</body>
     </html>
   );
 }

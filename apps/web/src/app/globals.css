@@ -2,122 +2,161 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
-
+/* ── Flexoki Light (default) ── */
 :root {
-  --paper: #FFFCF0;
-  --ink: #100F0F;
-  --accent: #24837B;
-  --accent-2: #205EA6;
-  --ui: #E6E4D9;
-  --ui-2: #DAD8CE;
-  --tx-2: #6F6E69;
-  --tx-3: #B7B5AC;
+  --color-paper: #FFFCF0;
+  --color-ink: #100F0F;
+  --color-card-bg: #f9f5ef;
+  --color-card-border: #d8cdbc;
+  --color-card-shadow: rgba(57, 45, 32, 0.08);
+  --color-muted: #6F6E69;
+  --color-link: #4385BE;
+  --color-tag-bg: #efe4d6;
+  --color-ui-2: #DAD8CE;
+  --color-ui-3: #CECDC3;
+  --gradient-warm: linear-gradient(135deg, #f6efe4 0%, #eadfce 55%, #f7f0e6 100%);
+  --gradient-accent: linear-gradient(90deg, #d7b98b 0%, #f0dec0 45%, #c7b39a 100%);
+  --gradient-hero: linear-gradient(135deg, #f6efe4 0%, #eadfce 55%, #f7f0e6 100%);
 }
 
+/* ── Flexoki Dark ── */
 .dark {
-  --paper: #1C1B1A;
-  --ink: #CECDC3;
-  --accent: #3AA99F;
-  --accent-2: #4385BE;
-  --ui: #282726;
-  --ui-2: #343331;
-  --tx-2: #878580;
-  --tx-3: #575653;
+  --color-paper: #1C1B1A;
+  --color-ink: #FFFCF0;
+  --color-card-bg: #282726;
+  --color-card-border: #403E3C;
+  --color-card-shadow: rgba(0, 0, 0, 0.25);
+  --color-muted: #878580;
+  --color-link: #4385BE;
+  --color-tag-bg: #343331;
+  --color-ui-2: #343331;
+  --color-ui-3: #403E3C;
+  --gradient-warm: linear-gradient(135deg, #282726 0%, #1C1B1A 55%, #282726 100%);
+  --gradient-accent: linear-gradient(90deg, #5E409D 0%, #4385BE 45%, #5E409D 100%);
+  --gradient-hero: linear-gradient(135deg, #282726 0%, #1C1B1A 55%, #282726 100%);
 }
 
+/* ── Base ── */
 * {
+  box-sizing: border-box;
+}
+
+html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--paper);
-  color: var(--ink);
-  font-family: "IBM Plex Mono", monospace;
-  font-weight: 500;
-  overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-mono), "IBM Plex Mono", monospace;
+  font-weight: 600;
+  line-height: 1.5;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
-/* Scrollbar */
+/* ── Scrollbar ── */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--paper);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--ui-2);
-  border-radius: 3px;
+  background: var(--color-card-border);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--tx-3);
+  background: var(--color-muted);
 }
 
-/* Subtle grid background for hero */
-.hero-grid {
+/* ── Custom Utilities ── */
+.card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 14px;
+  box-shadow: 0 6px 18px var(--color-card-shadow);
+  transition: box-shadow 120ms ease, transform 120ms ease, background-color 300ms ease, border-color 300ms ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 28px var(--color-card-shadow);
+  transform: translateY(-2px);
+}
+
+.section-divider {
+  height: 2px;
+  background: var(--gradient-accent);
+  border: none;
+  margin: 0;
+}
+
+.pill {
+  background: var(--color-tag-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+
+.label-upper {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+/* ── Noise texture overlay ── */
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(var(--ui) 1px, transparent 1px),
-    linear-gradient(90deg, var(--ui) 1px, transparent 1px);
-  background-size: 64px 64px;
-  opacity: 0.5;
-  mask-image: radial-gradient(
-    ellipse 70% 50% at 50% 40%,
-    black 20%,
-    transparent 70%
-  );
+  opacity: 0.35;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' fill='%23100F0F' opacity='0.07'/%3E%3C/svg%3E");
+  background-repeat: repeat;
 }
 
-/* Section reveal animation — fade only, no translateY */
+.dark .noise-overlay::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' fill='%23FFFCF0' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ── Dot grid pattern ── */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--color-card-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ── Scroll reveal ── */
 .reveal {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.reveal.visible {
   opacity: 1;
-  transition: opacity 0.6s ease-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .reveal {
-    opacity: 0;
-  }
-  .reveal.visible {
-    opacity: 1;
-  }
+/* ── Progress bar ── */
+.progress-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-ui-2);
+  overflow: hidden;
+  transition: background-color 300ms ease;
 }
 
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
-
-/* Nav blur */
-.nav-blur {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* Selection */
-::selection {
-  background: rgba(36, 131, 123, 0.25);
-  color: inherit;
-}
-
-.dark ::selection {
-  background: rgba(58, 169, 159, 0.3);
-}
-
-/* Terminal cursor blink */
-.cursor-blink::after {
-  content: "▌";
-  animation: blink 1s step-end infinite;
-  color: var(--accent);
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--gradient-accent);
 }
